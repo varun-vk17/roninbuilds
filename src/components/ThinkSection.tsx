@@ -24,10 +24,29 @@ export default function ThinkSection() {
             fontSize: "clamp(28px, 3.75vw, 48px)",
             lineHeight: "normal",
             margin: 0,
+            paddingBottom: "clamp(20px, 3.125vw, 40px)",
           }}
         >
           WE THINK
         </h2>
+        <div
+          className="az-up w-full"
+          style={{
+            "--az-delay": "0.22s",
+            fontFamily: '"DM Sans:Regular", "DM Sans", sans-serif',
+            fontWeight: 700,
+            fontSize: "clamp(16px, 2.1875vw, 28px)",
+            lineHeight: 1.6,
+            color: "rgba(255,255,255,0.8)",
+            fontVariationSettings: '"opsz" 14',
+            textTransform: "uppercase",
+          } as React.CSSProperties}
+        >
+          <p className="mb-1">
+            ATTENTION IS EASY TO BUY. INTEREST IS HARDER TO EARN.
+          </p>
+          <p className="mb-0">ACTION TAKES A REASON.</p>
+        </div>
       </div>
 
       {/* Showcase Card containing the fresh visual with the subtext at the top */}
