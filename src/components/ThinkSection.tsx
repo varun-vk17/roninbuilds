@@ -59,7 +59,7 @@ export default function ThinkSection() {
         }}
       >
         <img
-          src="/think-card.jpg"
+          src="/think-card.png"
           alt="We Think: Attention is easy to buy. Interest is harder to earn. Action takes a reason."
           className="w-full h-auto block object-cover object-center"
           loading="lazy"
