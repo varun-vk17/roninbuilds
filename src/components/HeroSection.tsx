@@ -22,7 +22,7 @@ export default function HeroSection() {
       className="relative w-full h-[100svh] overflow-hidden"
     >
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 w-full h-full"
         style={{
           backgroundImage: "url('/hero-bg.jpg')",
@@ -33,9 +33,9 @@ export default function HeroSection() {
       >
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/50" />
-        
+
         {/* Vignette */}
-        <div 
+        <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background: "radial-gradient(ellipse at 30% 80%, rgba(0,0,0,0.7) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.5) 0%, transparent 50%)"
@@ -72,13 +72,13 @@ export default function HeroSection() {
       </nav>
 
       {/* Desktop Right Edge Tab */}
-      <div 
+      <div
         className="absolute top-0 right-0 h-48 w-12 bg-[#F3F0E6] hidden md:flex items-center justify-center z-20"
         style={{
           borderBottomLeftRadius: "8px"
         }}
       >
-        <div 
+        <div
           className="transform -rotate-90 whitespace-nowrap text-[10px] tracking-widest text-black/80 font-bold"
           style={{ fontFamily: '"Instrument Sans:Bold", sans-serif' }}
         >
@@ -88,15 +88,15 @@ export default function HeroSection() {
 
       {/* Desktop Top Left: Overline & Wordmark */}
       <div className="absolute top-16 left-12 z-20 hidden md:block">
-        <p 
+        <p
           className="text-white text-[11px] tracking-[0.2em] uppercase mb-1 h-item h-d1"
           style={{ fontFamily: '"Instrument Sans:Medium", sans-serif' }}
         >
           A REVENUE-BASED CREATIVE STUDIO.
         </p>
-        <h1 
+        <h1
           className="text-white leading-none tracking-tight h-item h-wordmark h-d2"
-          style={{ 
+          style={{
             fontFamily: '"Monument Extended:Ultrabold", sans-serif',
             fontSize: "clamp(80px, 18vw, 240px)",
             marginLeft: "-6px",
@@ -109,9 +109,9 @@ export default function HeroSection() {
 
       {/* Desktop Middle Right: Descriptor Paragraph */}
       <div className="absolute top-[45%] right-24 z-20 max-w-[420px] text-left h-item h-d3 hidden md:block">
-        <p 
+        <p
           className="text-white text-2xl leading-snug"
-          style={{ 
+          style={{
             fontFamily: '"DM Sans:Regular", "DM Sans", sans-serif',
             fontWeight: 400,
             textShadow: "0 1px 20px rgba(0,0,0,0.6)"
@@ -148,16 +148,16 @@ export default function HeroSection() {
       </div>
 
       {/* Desktop Bottom Center: Scroll to continue */}
-      <div 
+      <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-2 cursor-pointer h-item h-d5 opacity-80 hover:opacity-100 transition-opacity"
         onClick={() => handleScrollTo("#revenue-system")}
       >
         <div className="w-5 h-5 rounded-full border border-white/50 flex items-center justify-center">
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 9l6 6 6-6"/>
+            <path d="M6 9l6 6 6-6" />
           </svg>
         </div>
-        <span 
+        <span
           className="text-white text-[10px] tracking-widest uppercase"
           style={{ fontFamily: '"Instrument Sans:Medium", sans-serif' }}
         >
@@ -169,7 +169,7 @@ export default function HeroSection() {
       {/* MOBILE LAYOUT (< md) - STRUCTURE MATCHES REFERENCE IMAGE                  */}
       {/* ========================================================================= */}
       <div className="flex md:hidden flex-col justify-between h-full w-full px-5 pt-6 pb-7 relative z-20">
-        
+
         {/* Row 1: Top Bar with Menu Pill */}
         <div className="flex justify-end items-center h-item h-d1">
           <button
@@ -188,7 +188,7 @@ export default function HeroSection() {
           <div className="absolute top-16 right-5 z-30 bg-black/90 backdrop-blur-xl border border-white/15 rounded-2xl p-5 shadow-2xl flex flex-col gap-4 min-w-[200px] animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-2 border-b border-white/10">
               <span className="text-[10px] tracking-widest uppercase text-white/50 font-bold">Navigation</span>
-              <button 
+              <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-white/60 hover:text-white text-xs cursor-pointer"
               >
@@ -210,7 +210,7 @@ export default function HeroSection() {
               </a>
             ))}
             <div className="pt-2 border-t border-white/10">
-              <div 
+              <div
                 className="text-[10px] tracking-widest uppercase text-amber-300/90 font-bold"
                 style={{ fontFamily: '"Instrument Sans:Bold", sans-serif' }}
               >
@@ -224,7 +224,7 @@ export default function HeroSection() {
         <div className="flex flex-col mt-2">
           {/* Overline: Right-aligned above RONIN like 'MADE FOR MUGS. BUILT FOR TABLES.' */}
           <div className="text-right mb-1.5 h-item h-d1">
-            <p 
+            <p
               className="text-white text-[10px] tracking-[0.16em] uppercase font-bold"
               style={{ fontFamily: '"Instrument Sans:Bold", sans-serif' }}
             >
@@ -233,10 +233,11 @@ export default function HeroSection() {
           </div>
 
           {/* Main Title: Full-width massive RONIN */}
-          <h1 
-            className="text-white leading-[0.85] tracking-tight uppercase h-item h-wordmark h-d2"
-            style={{ 
-              fontFamily: '"Monument Extended:Ultrabold", sans-serif',
+          <h1
+            className="text-white leading-[0.85] tracking-tight uppercase"
+            style={{
+              fontFamily: "'Monument Extended:Ultrabold'",
+              fontWeight: 800,
               fontSize: "clamp(58px, 18.5vw, 84px)",
               marginLeft: "-3px",
               textShadow: "0 2px 30px rgba(0,0,0,0.5)"
@@ -247,9 +248,9 @@ export default function HeroSection() {
 
           {/* Descriptor: Floated to right, left-aligned within block, exactly like reference image */}
           <div className="ml-auto max-w-[245px] sm:max-w-[280px] mt-4 text-left h-item h-d3">
-            <p 
+            <p
               className="text-white text-[14px] sm:text-[15px] leading-snug font-normal"
-              style={{ 
+              style={{
                 fontFamily: '"DM Sans:Regular", "DM Sans", sans-serif',
                 textShadow: "0 1px 16px rgba(0,0,0,0.8)",
                 color: "rgba(255, 255, 255, 0.92)"
@@ -290,11 +291,11 @@ export default function HeroSection() {
           </a>
 
           {/* Bottom Right: Scroll to continue matching reference image */}
-          <div 
+          <div
             className="flex items-center gap-2 cursor-pointer pb-1.5 opacity-85 hover:opacity-100 transition-opacity shrink-0"
             onClick={() => handleScrollTo("#revenue-system")}
           >
-            <span 
+            <span
               className="text-white text-[9px] tracking-wider uppercase font-semibold text-right"
               style={{ fontFamily: '"Instrument Sans:Medium", sans-serif' }}
             >
@@ -302,7 +303,7 @@ export default function HeroSection() {
             </span>
             <div className="w-5 h-5 rounded-full border border-dashed border-white/60 flex items-center justify-center shrink-0">
               <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 9l6 6 6-6"/>
+                <path d="M6 9l6 6 6-6" />
               </svg>
             </div>
           </div>
