@@ -1,0 +1,10 @@
+{
+  "description": "Create a highly responsive hero section for websites, ensuring design fidelity across mobile and tablet devices for an optimal user experience.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

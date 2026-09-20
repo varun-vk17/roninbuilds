@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap');
+@import 'tailwindcss';
+
+html { scroll-behavior: smooth; }
+
+/* ─── SCROLL ANIMATIONS ──────────────────────────────────── */
+
+/* Hidden states — applied via className */
+.az-up    { opacity: 0 !important; transform: translateY(56px) !important; }
+.az-left  { opacity: 0 !important; transform: translateX(-52px) !important; }
+.az-right { opacity: 0 !important; transform: translateX(52px) !important; }
+.az-fade  { opacity: 0 !important; }
+.az-scale { opacity: 0 !important; transform: scale(0.88) !important; }
+.az-blur  { opacity: 0 !important; filter: blur(10px) !important; transform: translateY(24px) !important; }
+.az-tilt  { opacity: 0 !important; transform: translateY(40px) rotate(4deg) !important; transform-origin: left bottom; }
+
+/* Revealed — transition defined here so it triggers when class is added */
+.az-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+.az-up.az-visible, .az-left.az-visible, .az-right.az-visible, .az-scale.az-visible, .az-tilt.az-visible {
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1) var(--az-delay,0s),
+              transform 0.9s cubic-bezier(0.16,1,0.3,1) var(--az-delay,0s);
+}
+.az-fade.az-visible {
+  transition: opacity 1s ease var(--az-delay,0s);
+}
+.az-blur.az-visible {
+  transition: opacity 1s ease var(--az-delay,0s),
+              filter 1s ease var(--az-delay,0s),
+              transform 1s cubic-bezier(0.16,1,0.3,1) var(--az-delay,0s);
+}
+
+/* ─── HERO CASCADE ───────────────────────────────────────── */
+.hero-ready .h-item { animation-play-state: running !important; }
+.h-item {
+  animation-play-state: paused;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16,1,0.3,1);
+  animation-name: fade-up;
+  animation-duration: 1s;
+}
+.h-item.h-d1 { animation-delay: 0.05s; }
+.h-item.h-d2 { animation-delay: 0.20s; }
+.h-item.h-d3 { animation-delay: 0.36s; }
+.h-item.h-d4 { animation-delay: 0.50s; }
+.h-item.h-d5 { animation-delay: 0.64s; }
+
+/* STORYZEN wordmark: sweeps in left-to-right */
+.h-item.h-wordmark {
+  animation-name: clip-reveal;
+  animation-duration: 1.1s;
+}
+
+/* ─── MICRO-INTERACTIONS ─────────────────────────────────── */
+.lift {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.4s ease !important;
+}
+.lift:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 28px 64px rgba(0,0,0,0.4) !important;
+}
+
+.btn-glow {
+  transition: transform 0.22s ease, box-shadow 0.28s ease !important;
+}
+.btn-glow:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 40px rgba(0,81,247,0.5) !important;
+}
+
+.btn-dark-glow {
+  transition: transform 0.22s ease, box-shadow 0.28s ease !important;
+}
+.btn-dark-glow:hover {
+  transform: scale(1.04) !important;
+  box-shadow: 0 0 32px rgba(0,0,0,0.7), 0 0 64px rgba(0,81,247,0.15) !important;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes clip-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-28px) scale(1.04); }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% { transform: translateY(0) scale(1) translateX(0); }
+  33% { transform: translateY(20px) scale(0.97) translateX(-12px); }
+  66% { transform: translateY(-16px) scale(1.03) translateX(8px); }
+}
+
+@keyframes hero-badge-in {
+  from { opacity: 0; transform: translateY(-10px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero orbs */
+.hero-orb-1 {
+  animation: orb-float 9s ease-in-out infinite;
+}
+.hero-orb-2 {
+  animation: orb-float-2 13s ease-in-out infinite;
+}
+.hero-orb-3 {
+  animation: orb-float 7s ease-in-out infinite 1.5s;
+}
+
+/* Grain noise overlay */
+.hero-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Stat card shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.stat-shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.10) 50%,
+    rgba(255,255,255,0.04) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s ease infinite;
+}
+
+@font-face {
+  font-family: "Monument Extended:Ultrabold";
+  font-style: normal;
+  font-weight: 800;
+  src: local('Monument Extended Ultrabold'), local('MonumentExtended-Ultrabold'), local('Monument Extended');
+}
+
+@font-face {
+  font-family: "Instrument Sans:Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/InstrumentSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Sans:SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.figma.com/font/InstrumentSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Sans:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://static.figma.com/font/InstrumentSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Sans:Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://static.figma.com/font/InstrumentSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans:Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans:SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2");
+}
