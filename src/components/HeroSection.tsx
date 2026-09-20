@@ -236,11 +236,13 @@ export default function HeroSection() {
           <h1
             className="text-white leading-[0.85] tracking-tight uppercase"
             style={{
-              fontFamily: "'Monument Extended:Ultrabold'",
+              fontFamily:
+                "'Monument Extended:Ultrabold', 'Big Shoulders Display', Impact, sans-serif",
               fontWeight: 800,
+              fontStyle: "normal",
               fontSize: "clamp(58px, 18.5vw, 84px)",
               marginLeft: "-3px",
-              textShadow: "0 2px 30px rgba(0,0,0,0.5)"
+              textShadow: "0 2px 30px rgba(0,0,0,0.5)",
             }}
           >
             RONIN
