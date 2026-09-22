@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { Routes, Route } from "react-router-dom"
 import IntroScreen from "@/components/IntroScreen"
 import HeroSection from "@/components/HeroSection"
 import FadeTransition from "@/components/FadeTransition"
@@ -12,12 +13,14 @@ import WeWorkWithSection from "@/components/WeWorkWithSection"
 import FAQSection from "@/components/FAQSection"
 import FinalCTASection from "@/components/FinalCTASection"
 import Footer from "@/components/Footer"
+import ApplyPage from "@/pages/ApplyPage"
+import DesignsPage from "@/pages/DesignsPage"
 
 // Selector for all scroll-animation targets
 const AZ_SELECTOR =
   ".az-up,.az-left,.az-right,.az-fade,.az-scale,.az-blur,.az-tilt"
 
-export default function App() {
+function LandingPage() {
   const [introDone, setIntroDone] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
 
@@ -77,3 +80,14 @@ export default function App() {
     </>
   )
 }
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/apply" element={<ApplyPage />} />
+      <Route path="/designs" element={<DesignsPage />} />
+    </Routes>
+  )
+}
+

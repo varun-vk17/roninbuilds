@@ -1,4 +1,5 @@
-import { cardBg, gradient } from "@/constants"
+import { Link } from "react-router-dom"
+import { cardBg } from "@/constants"
 
 export default function FinalCTASection() {
   return (
@@ -128,10 +129,10 @@ export default function FinalCTASection() {
             zIndex: 1,
           }}
         >
-          <a
-            href="#"
+          <Link
+            to="/apply"
             rel="noopener noreferrer"
-            className="no-underline flex items-center justify-center"
+            className="no-underline flex items-center justify-center btn-dark-glow"
             style={{
               background: "black",
               borderRadius: "40px",
@@ -145,7 +146,7 @@ export default function FinalCTASection() {
             }}
           >
             Claim your founding spot — $499
-          </a>
+          </Link>
           <p
             style={{
               fontFamily:

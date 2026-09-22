@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
+import { Link } from "react-router-dom"
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLElement>(null)
@@ -9,6 +10,7 @@ export default function HeroSection() {
     { label: "HOW IT WORKS", href: "#how-it-works", active: false },
     { label: "PRICING", href: "#pricing", active: false },
     { label: "FAQ", href: "#faq", active: false },
+    { label: "OUR DESIGNS", href: "/designs", isPage: true, active: false },
   ]
 
   const handleScrollTo = (href: string) => {
@@ -49,26 +51,40 @@ export default function HeroSection() {
 
       {/* Desktop Top Navigation */}
       <nav className="absolute top-6 right-16 z-20 hidden md:flex items-center gap-8">
-        {navLinks.map((link, idx) => (
-          <a
-            key={idx}
-            href={link.href}
-            className="text-white hover:text-white/80 no-underline text-xs tracking-widest relative"
-            style={{
-              fontFamily: '"Instrument Sans:Medium", sans-serif',
-              textTransform: "uppercase"
-            }}
-            onClick={(e) => {
-              e.preventDefault()
-              handleScrollTo(link.href)
-            }}
-          >
-            {link.label}
-            {link.active && (
-              <span className="absolute -bottom-2 left-0 w-full border-b-[1px] border-dotted border-white/60" />
-            )}
-          </a>
-        ))}
+        {navLinks.map((link, idx) =>
+          link.isPage ? (
+            <Link
+              key={idx}
+              to={link.href}
+              className="text-white hover:text-white/80 no-underline text-xs tracking-widest relative"
+              style={{
+                fontFamily: '"Instrument Sans:Medium", sans-serif',
+                textTransform: "uppercase"
+              }}
+            >
+              {link.label}
+            </Link>
+          ) : (
+            <a
+              key={idx}
+              href={link.href}
+              className="text-white hover:text-white/80 no-underline text-xs tracking-widest relative"
+              style={{
+                fontFamily: '"Instrument Sans:Medium", sans-serif',
+                textTransform: "uppercase"
+              }}
+              onClick={(e) => {
+                e.preventDefault()
+                handleScrollTo(link.href)
+              }}
+            >
+              {link.label}
+              {link.active && (
+                <span className="absolute -bottom-2 left-0 w-full border-b-[1px] border-dotted border-white/60" />
+              )}
+            </a>
+          )
+        )}
       </nav>
 
       {/* Desktop Right Edge Tab */}
@@ -97,7 +113,8 @@ export default function HeroSection() {
         <h1
           className="text-white leading-none tracking-tight h-item h-wordmark h-d2"
           style={{
-            fontFamily: '"Monument Extended:Ultrabold", sans-serif',
+            fontFamily: 'var(--font-display, "Big Shoulders Display", "Bebas Neue", Impact, sans-serif)',
+            fontWeight: 900,
             fontSize: "clamp(80px, 18vw, 240px)",
             marginLeft: "-6px",
             textShadow: "0 2px 40px rgba(0,0,0,0.4)"
@@ -123,13 +140,9 @@ export default function HeroSection() {
 
       {/* Desktop Bottom Left: Simple Blue CTA */}
       <div className="absolute bottom-16 left-12 z-20 h-item h-d4 hidden md:block">
-        <a
-          href="#pricing"
+        <Link
+          to="/apply"
           className="btn-glow no-underline flex items-center justify-center"
-          onClick={(e) => {
-            e.preventDefault()
-            handleScrollTo("#pricing")
-          }}
           style={{
             background: "rgb(0, 81, 247)",
             borderRadius: "100px",
@@ -144,7 +157,7 @@ export default function HeroSection() {
           }}
         >
           Start the sprint →
-        </a>
+        </Link>
       </div>
 
       {/* Desktop Bottom Center: Scroll to continue */}
@@ -195,20 +208,32 @@ export default function HeroSection() {
                 ✕
               </button>
             </div>
-            {navLinks.map((link, idx) => (
-              <a
-                key={idx}
-                href={link.href}
-                className="text-white hover:text-white/80 no-underline text-xs tracking-wider uppercase font-medium"
-                style={{ fontFamily: '"Instrument Sans:Medium", sans-serif' }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleScrollTo(link.href)
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link, idx) =>
+              link.isPage ? (
+                <Link
+                  key={idx}
+                  to={link.href}
+                  className="text-white hover:text-white/80 no-underline text-xs tracking-wider uppercase font-medium"
+                  style={{ fontFamily: '"Instrument Sans:Medium", sans-serif' }}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={idx}
+                  href={link.href}
+                  className="text-white hover:text-white/80 no-underline text-xs tracking-wider uppercase font-medium"
+                  style={{ fontFamily: '"Instrument Sans:Medium", sans-serif' }}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleScrollTo(link.href)
+                  }}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             <div className="pt-2 border-t border-white/10">
               <div
                 className="text-[10px] tracking-widest uppercase text-amber-300/90 font-bold"
@@ -236,9 +261,8 @@ export default function HeroSection() {
           <h1
             className="text-white leading-[0.85] tracking-tight uppercase"
             style={{
-              fontFamily:
-                "'Monument Extended:Ultrabold', 'Big Shoulders Display', Impact, sans-serif",
-              fontWeight: 800,
+              fontFamily: 'var(--font-display, "Big Shoulders Display", "Bebas Neue", Impact, sans-serif)',
+              fontWeight: 900,
               fontStyle: "normal",
               fontSize: "clamp(58px, 18.5vw, 84px)",
               marginLeft: "-3px",
@@ -269,13 +293,9 @@ export default function HeroSection() {
         {/* Bottom Row: CTA on Left, Scroll to Continue on Right */}
         <div className="flex items-end justify-between gap-3 pt-3 h-item h-d4">
           {/* Bottom Left: Only our CTA button */}
-          <a
-            href="#pricing"
+          <Link
+            to="/apply"
             className="btn-glow no-underline flex items-center justify-center shrink-0"
-            onClick={(e) => {
-              e.preventDefault()
-              handleScrollTo("#pricing")
-            }}
             style={{
               background: "rgb(0, 81, 247)",
               borderRadius: "100px",
@@ -290,7 +310,7 @@ export default function HeroSection() {
             }}
           >
             Start the sprint →
-          </a>
+          </Link>
 
           {/* Bottom Right: Scroll to continue matching reference image */}
           <div
